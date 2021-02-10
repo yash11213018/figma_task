@@ -1,20 +1,25 @@
 import styled from 'styled-components';
 import Hamburger from '../SideDrawer/Hamburger';
+import {ToolbarData} from './ToolbarData';
 
 const Toolbar = props => {
     return (
         <Wrapper>
          <header className="toolbar">
             <nav className="toolbar__navigation">
-                <div>
+                <div className="toolbar__hamburger">
                     <Hamburger click = {props.drawerToggleHandler}/>
                 </div>
-                <div className="toolbar__logo"><a href="/">THE LOGO</a></div>
+                <div className="toolbar__logo"><a href={ToolbarData.logo.link}>{ToolbarData.logo.name}</a></div>
                 <div className="logo_seperator" />
                 <div className="toolbar_navigation-items">
                     <ul>
-                        <li><a href="/">Products</a></li>
-                        <li><a href="/">Users</a></li>
+                        {ToolbarData.items.map((item, key ) => (
+                            <li key={key}>
+                                <a href = {item.link} >{item.name}</a>
+                            </li>
+                        ))}
+                        
                     </ul>
                 </div>
             </nav>
@@ -97,6 +102,21 @@ const Wrapper = styled.header`
            width:25px;
            height:2px;
            background:white;
+       }
+
+       @media (max-width:768px){
+        .toolbar_navigation-items{
+            display:none;
+        }
+       }
+
+       @media (min-width : 769px){
+           .toolbar__hamburger{
+               display:none;
+           }
+           .toolbar__logo{
+               margin-left : 0;
+           }
        }
 
 
