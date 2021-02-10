@@ -1,8 +1,29 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import Hamburger from '../SideDrawer/Hamburger';
 
 const Toolbar = props => {
-    const Wrapper = styled.header`
+    return (
+        <Wrapper>
+         <header className="toolbar">
+            <nav className="toolbar__navigation">
+                <div>
+                    <Hamburger click = {props.drawerToggleHandler}/>
+                </div>
+                <div className="toolbar__logo"><a href="/">THE LOGO</a></div>
+                <div className="logo_seperator" />
+                <div className="toolbar_navigation-items">
+                    <ul>
+                        <li><a href="/">Products</a></li>
+                        <li><a href="/">Users</a></li>
+                    </ul>
+                </div>
+            </nav>
+         </header>
+        </Wrapper>
+    );
+    
+}
+const Wrapper = styled.header`
        .toolbar{
            position:fixed;
            width:100%;
@@ -85,26 +106,5 @@ const Toolbar = props => {
     
 
     `;
-    return (
-        <Wrapper>
-         <header className="toolbar">
-            <nav className="toolbar__navigation">
-                <div>
-                    <Hamburger />
-                </div>
-                <div className="toolbar__logo"><a href="/">THE LOGO</a></div>
-                <div className="logo_seperator" />
-                <div className="toolbar_navigation-items">
-                    <ul>
-                        <li><a href="/">Products</a></li>
-                        <li><a href="/">Users</a></li>
-                    </ul>
-                </div>
-            </nav>
-         </header>
-        </Wrapper>
-    );
-    
-}
 
 export default Toolbar;
